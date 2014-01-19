@@ -1,5 +1,5 @@
 // require the base library
-var ita = require("./lib/ita/ita")
+var crypto = require("./lib/crypto/crypto")
 
 /* horrific hack for console javascript
  * suppress alerts from rsa and rawdeflate libraries
@@ -15,36 +15,36 @@ var print = function(message, title){
     console.log("");
 }
 
-var keys = ita.generate_keys();
+var keys = crypto.generate_keys();
 print(keys.public, "public key");
 print(keys.private, "private key");
 
 var plain = "just some sample text";
 var password = "opensesame";
 
-var cypher = ita.AES.enc(plain,password);
+var cypher = crypto.AES.enc(plain,password);
 print(cypher, "encrypted message (AES)");
 
-var decrypted = ita.AES.dec("U2FsdGVkX1/1uzsMtEvYgubmfEc5Yc7u2NBkVppg5PsjWphv+O0iar0jZNpRQ3BM",password);
+var decrypted = crypto.AES.dec("U2FsdGVkX1/1uzsMtEvYgubmfEc5Yc7u2NBkVppg5PsjWphv+O0iar0jZNpRQ3BM",password);
 print(decrypted, "decrypted message (AES)");
 
-var packed = ita.pack(plain,password,keys.private);
+var packed = crypto.pack(plain,password,keys.private);
 print(packed, "all packed up");
 
-var unpacked = ita.unpack(packed,password);
+var unpacked = crypto.unpack(packed,password);
 print(unpacked, "unpacked");
 
-var decrypted = ita.decrypt(packed,keys.private);
+var decrypted = crypto.decrypt(packed,keys.private);
 print(decrypted, "decrpted");
 
-var rsacrypted = ita.rsa.enc(password,keys.private);
+var rsacrypted = crypto.rsa.enc(password,keys.private);
 print(rsacrypted, "encrypted (RSA)");
 
-var rsadecrypted = ita.rsa.dec(rsacrypted,keys.private);
+var rsadecrypted = crypto.rsa.dec(rsacrypted,keys.private);
 print(rsadecrypted, "decrypted (RSA)");
 
-var deflated = ita.deflate(keys.private);
+var deflated = crypto.deflate(keys.private);
 print(deflated.length+" jibberish characters", "deflated private key");
 
-var inflated = ita.inflate(deflated);
+var inflated = crypto.inflate(deflated);
 print(inflated.length+" coherent characters\n"+inflated, "inflated from deflated private key");

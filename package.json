@@ -1,0 +1,41 @@
+{
+  "name": "js-crypto-lib",
+  "version": "0.0.0",
+  "description": "javascript encryption library and wrapper for RSA and AES including Open SSH compatible keygen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:billymoon/js-crypto-lib.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "rsa",
+    "crypto",
+    "crypt",
+    "encrypt",
+    "decrypt",
+    "aes",
+    "asn1",
+    "ssh",
+    "keygen"
+  ],
+  "author": "Billy Moon",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/billymoon/js-crypto-lib/issues"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-uglify": "0.x.x",
+    "grunt-contrib-jshint": "0.x.x",
+    "grunt-contrib-qunit": "0.x.x",
+    "grunt-contrib-watch": "0.x.x",
+    "grunt-contrib-concat": "0.x.x"
+  }
+}
